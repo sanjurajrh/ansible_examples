@@ -1,0 +1,22 @@
+---
+- name: Using block 
+  hosts: all
+  tasks:
+  - block:
+    - name: Install package 
+      yum:
+        name: htttpd
+        state: latest
+    become: true
+    rescue:
+    - name: Start the service crond
+      service:
+        name: crond
+        state: restarted
+        enabled: true
+    become: true
+    always:
+    - name: Print the custom message
+      debug:
+        msg: "I will always run"
+...

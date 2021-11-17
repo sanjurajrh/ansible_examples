@@ -1,0 +1,11 @@
+---
+- name: Check the service status 
+  hosts: all
+  become: true
+  tasks:
+  - name: check the status 
+    shell: "systemctl is-active {{ item }}"
+    loop: 
+    - firewalld
+    - crond
+...

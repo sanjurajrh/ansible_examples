@@ -1,0 +1,21 @@
+---
+- name: Verify package exists
+  hosts: all
+  become: true
+  tasks:
+  - name: check the package
+    command: rpm -qa vsftpd
+    register: pkg_status
+  - name: Print result 
+    debug:
+      var: pkg_status
+  - name: Print the pkg detail
+    debug:
+      msg: "package exists in the system"
+    when: pkg_status.stdout != ""
+  - name: Install the package
+    yum:
+      name: vsftpd
+      state: latest
+    when: pkg_status.stdout is defined
+...

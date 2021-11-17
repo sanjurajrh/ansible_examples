@@ -1,0 +1,12 @@
+---
+- name: Install a package
+  hosts: all
+  become: true
+  vars_files:
+  - userinfo
+  tasks:
+  - name: Install the requested package
+    yum:
+      name: "{{ pkg }}"
+      state: latest
+...

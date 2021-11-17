@@ -1,0 +1,43 @@
+---
+- name: Deploy a web server
+  hosts: all
+  become: true
+  tasks:
+# Step1: Install the package   
+  - name: Install the apache 
+    yum:
+      name: httpd
+      state: latest    
+# Step2: Configure the server
+  - name: Content to server
+    copy:
+      content: "Hello World\n"
+      dest: /var/www/html/index.html
+    tags:
+    - install
+# Step3: Start and enable the service
+  - name: Service of httpd to be enabled and started
+    service:
+      name: httpd
+      state: started
+      enabled: true
+# Step4: Open the ports 
+  - name: Allow access through firewall
+    firewalld:
+      service: http
+      immediate: true
+      permanent: true
+      state: enabled
+# Testing the web access from workstation as a separate play
+- name: Test th web access
+  hosts: localhost
+  tasks:
+  - name: Access the web service of servera.lab.example.com
+    uri: 
+      url: http://servera.lab.example.com
+      return_content: true
+    register: web_access
+  - name: Print the output
+    debug:
+      var: web_access.content
+...

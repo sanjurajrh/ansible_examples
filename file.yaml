@@ -1,0 +1,11 @@
+---
+- name: Create an emtpy file
+  hosts: all
+  become: true
+  tasks:
+  - name: Create an empty file
+    file:
+      path: /tmp/myfile_with_multiple_lines.txt
+      setype: httpd_sys_content_t
+      state: touch
+...

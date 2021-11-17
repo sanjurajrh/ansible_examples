@@ -1,0 +1,17 @@
+---
+- name: troubleshooting 
+  hosts: all
+  become: true
+  tasks:
+  - name: Print the first message
+    debug: 
+      msg: "Trying to install a package which doesnot exist"
+  - name: Install a package
+    yum:
+      name: htttpd
+      state: latest
+    ignore_errors: true
+  - name: print custom message
+    debug:
+      msg: "Pakcage name is incorrect"
+...

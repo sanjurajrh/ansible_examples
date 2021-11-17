@@ -1,0 +1,13 @@
+---
+- name: Instal package based on memory 
+  hosts: all
+  become: true
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: latest
+    when: 
+    - ansible_memfree_mb <= 170 
+    - ansible_distribution == "RedHat"
+...

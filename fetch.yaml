@@ -1,0 +1,10 @@
+---
+- name: Using fetch module
+  hosts: all
+  become: true
+  tasks:
+  - name: Fetch the file from remote host 
+    fetch:
+      src: /var/www/html/index.html
+      dest: files
+...

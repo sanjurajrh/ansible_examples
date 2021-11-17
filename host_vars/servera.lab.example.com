@@ -1,0 +1,1 @@
+myvar: host1

@@ -1,0 +1,10 @@
+---
+- name: Install the pkg from the custom fact 
+  hosts: all
+  become: true
+  tasks:
+  - name: Install the pkg
+    yum:
+      name: "{{ ansible_facts['ansible_local']['custom']['general']['pkg'] }}" 
+      state: latest
+...

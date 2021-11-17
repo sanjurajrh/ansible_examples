@@ -1,0 +1,13 @@
+---
+- name: Play1
+  hosts: all
+  tasks:
+  - name: Import the other playbooks
+    debug: 
+      msg: "Start importing the other playbooks"
+
+- name: Prepare the web server 
+  import_playbook: handlers.yaml
+- name: Prepare the content to server for db 
+  import_playbook: play.yml
+...

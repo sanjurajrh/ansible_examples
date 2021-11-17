@@ -1,0 +1,14 @@
+---
+- name: Using stat module
+  hosts: all
+  become: true
+  tasks:
+  - name: Using stat module
+    stat:
+      path: /tmp/myfile_with_multiple_lines.txt
+      checksum_algorithm: md5
+    register: result
+  - name: Check sum of the file
+    debug:
+      msg: "the checksum of the file is {{ result.stat.checksum }}"
+...

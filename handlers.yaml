@@ -1,0 +1,33 @@
+---
+- name: Using handlers
+  hosts: all
+  become: true
+  tasks:
+  - name: Update the web server
+    yum:
+      name: httpd
+      state: latest
+  - name: Content to serve
+    copy:
+      content: "IT Works!\n"
+      dest: /var/www/html/index.html
+    notify:
+    - restart apache
+  - name: Open the port
+    firewalld:
+      service: http
+      immediate: true
+      permanent: true
+      state: enabled
+    notify:
+    - print message
+  handlers:
+  - name: print message
+    debug:
+      msg: "Firewall ports are open now"
+  - name: restart apache
+    service:
+      name: httpd
+      state: restarted
+      enabled: true
+...

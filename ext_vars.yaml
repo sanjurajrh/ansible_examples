@@ -1,0 +1,14 @@
+---
+- name: Using variables
+  hosts: all
+  become: true
+  gather_facts: no
+  vars:
+    myvar: "This is a playbook variable"
+  vars_files:
+  - more_vars.yaml
+  tasks:
+  - name: Print the debug message
+    debug:
+      msg: "{{ myvar }}"
+...

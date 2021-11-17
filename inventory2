@@ -1,0 +1,11 @@
+[dc1]
+servera.lab.example.com
+
+[dc2]
+serverb.lab.example.com
+
+
+[mumbai]
+serverc.lab.example.com
+serverd.lab.example.com
+servera.lab.example.com

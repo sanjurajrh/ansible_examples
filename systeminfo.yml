@@ -1,0 +1,13 @@
+---
+- name: Collect the host infomration
+  hosts: all
+  gather_facts: true
+  tasks:
+  - name: Create the file which stores the system info
+    copy:
+      content: "This host {{ ansible_hostname }}  has {{ ansible_processor_count }} processor\n"
+      dest: /tmp/systeminfo.txt
+  - name: Another way of using ansible facts
+    debug:
+      msg: The default IPv4 address of the host {{ ansible_facts.fqdn }} is {{ ansible_facts.default_ipv4.address }}
+...

@@ -1,0 +1,13 @@
+---
+- name: Using sefcontext module
+  hosts: all
+  become: true
+  tasks:
+  - name: Using sefcontext module
+    sefcontext:
+      target: /tmp/myfile_with_multiple_lines.txt
+      setype: samba_share_t
+      state: present
+  - name: Restore the context
+    shell: restorecon -RF /tmp/myfile_with_multiple_lines.txt
+...

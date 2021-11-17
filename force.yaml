@@ -1,0 +1,31 @@
+---
+- name: Using handlers
+  hosts: all
+  become: true
+  force_handlers: true
+  tasks:
+  - name: Update the web server
+    yum:
+      name: httpd
+      state: latest
+  - name: Content to serve
+    copy:
+      content: "IT Works!\n"
+      dest: /var/www/html/index.html
+    notify:
+    - restart apache
+  - name: Open the port
+    firewalld:
+      service: http
+      immediate: true
+      permanent: true
+      state: enabled
+  - name: Failed tasks
+    command: sh /bin/abc
+  handlers:
+  - name: restart apache
+    service:
+      name: httpd
+      state: restarted
+      enabled: true
+...

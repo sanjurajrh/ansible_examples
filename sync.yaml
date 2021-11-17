@@ -1,0 +1,10 @@
+---
+- name: using synchronize 
+  hosts: all
+  become: true
+  tasks:
+  - name: Update the remote file 
+    synchronize:
+      src: myindex.html
+      dest: /tmp/myfile_with_multiple_lines.txt
+...

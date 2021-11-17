@@ -1,0 +1,13 @@
+---
+- name: Using blockinfile
+  hosts: all
+  become: true
+  tasks:
+  - name: blockinfile module usage
+    blockinfile:
+      path: /tmp/myfile_with_multiple_lines.txt
+      block: |
+        First line of text 
+        Second line of text
+      state: present
+...

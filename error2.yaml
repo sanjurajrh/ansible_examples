@@ -1,0 +1,17 @@
+---
+- name: Using failed_when
+  hosts: all
+  become: true
+  tasks:
+  - name: Check memory 
+    shell: cat /proc/meminfo  | grep -i memtotal | awk '{print $2/1024/1024}'
+    register: memory
+#    failed_when: memory.stdout|float < 2
+  - name: Print memory result
+    debug:
+      var: memory
+  - name: check disk space
+    shell: df -h /tmp/ | grep -v Filesystem |  awk '{ print $4}' | cut -d G -f1
+    register: tmpspace
+#    failed_when: 
+...

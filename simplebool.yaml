@@ -1,0 +1,13 @@
+---
+- name: Using boolean
+  hosts: all
+  become: true
+  vars:
+    mytask: true
+  tasks:
+  - name: Install httpd package
+    yum:
+      name: httpd
+      state: latest
+    when: mytask
+...

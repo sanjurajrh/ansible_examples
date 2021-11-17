@@ -1,0 +1,20 @@
+---
+- name: Clean the env
+  hosts: all
+  become: true
+  tasks:
+  - name: Remove the file 
+    file:
+      path: /var/www/html/index.html
+      state: absent
+  - name: Remove the package
+    yum:
+      name: httpd 
+      state: absent
+  - name: Firewall
+    firewalld:
+      service: http
+      immediate: true
+      permanent: true
+      state: disabled
+...

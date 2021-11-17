@@ -1,0 +1,9 @@
+---
+- name: Import task defined in another file
+  hosts: all
+  become: true
+  tasks:
+  - import_tasks: include_tasks.yml
+    vars:
+      package: telnet
+...

@@ -1,0 +1,11 @@
+---
+- name: Using lineinfile
+  hosts: all
+  become: true
+  tasks:
+  - name: lineinfile module usage
+    lineinfile:
+      path: /tmp/myfile_with_multiple_lines.txt
+      line: "This line is added using lineinfile module"
+      state: present
+...

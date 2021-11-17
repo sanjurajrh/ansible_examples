@@ -1,0 +1,15 @@
+---
+- name: Get a package installed on the host
+  hosts: all
+  become: true
+  vars_prompt:
+    - name: pkg
+      prompt: "Which package you want to install? "
+      private: no
+      default: telnet
+  tasks:
+  - name: Install the package
+    yum:
+      name: "{{ pkg }}"
+      state: latest
+...

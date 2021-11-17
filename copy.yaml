@@ -1,0 +1,10 @@
+---
+- name: Using copy module
+  hosts: all
+  become: true
+  tasks:
+  - name: copy the file to remote host 
+    copy:
+      src: myindex.html
+      dest: /var/www/html/index.html
+...

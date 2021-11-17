@@ -1,0 +1,12 @@
+---
+- name: Using is defined
+  hosts: all
+  become: true
+  vars:
+    myservice: httpd
+  tasks:
+  - name: "{{ myservice }} package is installed"
+    yum:
+      name: "{{ myservice }}"
+    when: myservice is defined
+...

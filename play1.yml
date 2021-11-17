@@ -1,0 +1,16 @@
+# ansible all  -i inventory1 -m user -a 'name=alice state=absent' -b
+---
+- name: Purpose of the playbook
+  hosts: all
+  become: true
+  tasks:
+  - name: Add the user 
+    user: name=alice state=present
+    when: inventory_hostname == "serverc.lab.example.com"
+  - name: Package to be installed
+    yum: name=httpd state=latest
+    when: inventory_hostname == "serverc.lab.example.com"
+  - name: Service of crond to be restarted
+    service: name=crond state=restarted enabled=true
+    when: inventory_hostname == "serverc.lab.example.com"
+...

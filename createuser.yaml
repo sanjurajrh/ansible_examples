@@ -1,0 +1,14 @@
+---
+- name: Create the user using variables
+  hosts: servera.lab.example.com
+  become: true
+  vars_files:
+  - userinfo.yml
+  tasks:
+  - name: Create the user 
+    user:
+      name: "{{ item.name }}"
+      state: present
+      uid: "{{ item.id }}"
+    with_items: "{{ users }}"
+...

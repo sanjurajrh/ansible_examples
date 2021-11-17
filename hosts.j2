@@ -1,0 +1,4 @@
+{# for comment entry #}
+{% for name in groups['all'] %}
+{{ hostvars[name]['ansible_facts']['default_ipv4']['address'] }} {{ hostvars[name]['ansible_facts']['fqdn'] }} {{ hostvars[name]['ansible_facts']['hostname'] }}
+{% endfor %}

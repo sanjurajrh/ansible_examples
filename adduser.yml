@@ -1,0 +1,10 @@
+---
+- name: Create user with passowrd
+  hosts: all
+  become: true
+  tasks:
+  - name: add user 
+    user:
+      name: alice
+      password: "{{ 'redhat123' | password_hash('sha512') }}"
+...

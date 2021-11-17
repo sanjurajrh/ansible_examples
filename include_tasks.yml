@@ -1,0 +1,13 @@
+- name: Create the file
+  file:
+    path: /tmp/myfile.txt
+    state: touch
+- name: Add the content to the file
+  lineinfile:
+    path: /tmp/myfile.txt
+    line: SELINUX=enforcing
+    state: present
+- name: Install a {{ package }}
+  yum:
+    name: "{{ package }}"
+    state: latest

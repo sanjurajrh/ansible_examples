@@ -1,0 +1,15 @@
+---
+- name: Using simple loop
+  hosts: all
+  become: true
+  vars:
+    myservices:
+    - crond 
+    - atd
+  tasks:
+  - name: Service update
+    service:
+      name: "{{ item }}"
+      state: restarted
+    loop: "{{ myservices }}"
+...

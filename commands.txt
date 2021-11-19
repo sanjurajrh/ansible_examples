@@ -1,0 +1,1003 @@
+  524  ansible-playbook ext_vars.yaml -i inventory2
+  525  cat more_vars.yaml 
+  526  vim ext_vars.yaml 
+  527  ansible-playbook ext_vars.yaml -i inventory2
+  528  ansible-playbook ext_vars.yaml -i inventory2 -e "myvar='This is connamdline variable'"
+  529  ls
+  530  cat userinfo
+  531  ls -l userinfo
+  532  file userinfo
+  533  ansible-vault view userinfo
+  534  cat ansible.cfg 
+  535  cat /home/student/config/.vault_pass
+  536  ls -l /home/student/config/.vault_pass
+  537  cat install_pkgs.yaml 
+  538  ls -ld /home/student/
+  539  cat ansible.cfg 
+  540  pwd
+  541  ansible --version
+  542  ls
+  543  cat facts.yml 
+  544  cat custom.fact 
+  545  cat facts_install.yaml 
+  546  cat custom_facts_creation_step.yaml 
+  547  cat custom.fact 
+  548  ansible--help
+  549  ansible --help
+  550  sudo ls /etc/sudoers.d/
+  551  sudo cat /etc/sudoers.d/90-cloud-init-users
+  552  ansible --help
+  553  cat simpleloop.yaml 
+  554  ansible-playbook  --syntax-check simpleloop.yaml
+  555  ansible-playbook simpleloop.yaml
+  556  cat simpleloop.yaml 
+  557  cat simpleloop_var.yaml 
+  558  cat nested_loop.yaml 
+  559  # {{ item.groups[1] }
+  560  cat nested_loop.yaml 
+  561  # with_items, with_dict
+  562  cat createuser.yaml 
+  563  cat userinfo.yml 
+  564  cat nested_loop.yaml 
+  565  ansible-doc user 
+  566  ansible-doc -t foo -l 
+  567  ansible-doc -t lookup -l 
+  568  ansible-doc -t lookup password
+  569  vim adduser.yml
+  570  cat adduser.yml 
+  571  ansible-playbook  --syntax-check adduser.yml 
+  572  ansible-playbook adduser.yml 
+  573  cat adduser.yml 
+  574  ls
+  575  cat register_variables.yaml 
+  576  ansible-playbook register_variables.yaml --syntax-check 
+  577  ansible-playbook register_variables.yaml -i inventory1
+  578  vim chekpackage.yml
+  579  ansible-playbook chekpackage.yml --syntax-check 
+  580  vim chekpackage.yml
+  581  ansible-playbook chekpackage.yml --syntax-check 
+  582  ansible-playbook chekpackage.yml 
+  583  vim chekpackage.yml
+  584  ansible-playbook chekpackage.yml --syntax-check 
+  585  ansible-playbook chekpackage.yml 
+  586  cat chekpackage.yml
+  587  ls
+  588  cat simplebool.yaml 
+  589  ansible all -a 'rpm -qa httpd' 
+  590  vim simplebool.yaml 
+  591  ansible-playbook  simplebool.yaml --syntax-check
+  592  ansible-playbook  simplebool.yaml
+  593  ansible-playbook  simplebool.yaml -vv
+  594  vim simplebool.yaml 
+  595  ansible-playbook  simplebool.yaml 
+  596  vim simplebool.yaml 
+  597  ansible-playbook  simplebool.yaml 
+  598  cat simplebool.yaml 
+  599  ansible all -m yum -a 'name=httpd state=absent' -b 
+  600  ansible all -a 'rpm -qa httpd' 
+  601  ansible all -m setup | grep mem
+  602  vim when.yaml
+  603  ansible all -m setup | grep mem
+  604  cat when.yaml 
+  605  ansible-playbook  when.yaml --syntax-check
+  606  ansible-playbook  when.yaml
+  607  vim when.yaml 
+  608  ansible all -m setup | grep distri
+  609  vim when.yaml 
+  610  ansible-playbook  when.yaml
+  611  ansible all -a 'rpm -qa httpd' 
+  612  ansible all -m yum -a 'name=httpd state=absent' -b 
+  613  ansible all -a 'rpm -qa httpd' 
+  614  vim when.yaml 
+  615  ansible-playbook  when.yaml
+  616  vim when.yaml 
+  617  ansible all -m yum -a 'name=httpd state=absent' -b 
+  618  ansible-playbook  when.yaml
+  619  cat when.yaml 
+  620  cat chekpackage.yml 
+  621  ansible all -m yum -a 'name=httpd state=absent' -b 
+  622  ssh servera ls -l /var/www/html
+  623  ansible all -m file -a 'path=/var/www/html/index.html state=absent' -b 
+  624  ssh servera ls -l /var/www/html
+  625  ssh serverb ls -l /var/www/html
+  626  ssh serverc ls -l /var/www/html
+  627  ssh serverd ls -l /var/www/html
+  628  ansible all -a 'rpm -qa httpd' 
+  629  vim handlers.yaml
+  630  vim cleanup.yaml
+  631  cp handlers.yaml force.yaml
+  632  vim force.yaml 
+  633  cat handlers.yaml 
+  634  ansible all -a 'rpm -qa httpd' 
+  635  ansible-playbook  --syntax-check handlers.yaml 
+  636  ansible-playbook handlers.yaml 
+  637  curl http://servera.lab.example.com
+  638  ansible-playbook cleanup.yaml 
+  639  vim force.yaml 
+  640  ansible-playbook  force.yaml --syntax-check 
+  641  ansible-playbook  force.yaml
+  642  vim force.yaml 
+  643  ansible-playbook cleanup.yaml 
+  644  ansible-playbook  force.yaml
+  645  cat force.yaml 
+  646  vim handlers.yaml 
+  647  ansible-playbook cleanup.yaml 
+  648  vim handlers.yaml 
+  649  ansible-playbook  handlers.yaml
+  650  vim handlers.yaml 
+  651  vim cleanup.yaml 
+  652  ansible-playbook cleanup.yaml 
+  653  ansible-playbook  handlers.yaml
+  654  vim handlers.yaml 
+  655  ansible-playbook cleanup.yaml 
+  656  ansible-playbook  handlers.yaml
+  657  vim handlers.yaml 
+  658  ansible-playbook  handlers.yaml --start-at-task="Content to serve"
+  659  ansible-playbook cleanup.yaml 
+  660  vim error1.yaml
+  661  vim error2.yaml
+  662  cat /proc/meminfo 
+  663  cat /proc/meminfo  | grep -i memtotal
+  664  cat /proc/meminfo  | grep -i memtotal | awk '{print $2}'
+  665  cat /proc/meminfo  | grep -i memtotal | awk '{print $2/1024}'
+  666  cat /proc/meminfo  | grep -i memtotal | awk '{print $2/1024/1024}'
+  667  # in GB 
+  668  vim error2.yaml 
+  669  df -h /tmp/
+  670  df -h /tmp/ | awk '{ print $4}
+'
+  671  df -h /tmp/ --no-headers| awk '{ print $4}'
+  672  df -h /tmp/  | awk '{ print $4}' | tail -n-1 
+  673  df -h /tmp/  | awk '{ print $4}' | tail -n-1  | cut -d G -f1
+  674  df -h /tmp/ | grep -v Filesystem
+  675  df -h /tmp/ | grep -v Filesystem |  awk '{ print $4}' | cut -d G -f1
+  676  vim error2.yaml 
+  677  cat error1.yaml 
+  678  ansible-playbook error1.yaml --syntax-check
+  679  vim inventory
+  680  ansible-playbook  error1.yaml 
+  681  vim inventory
+  682  vim error1.yaml 
+  683  ansible-playbook  error1.yaml 
+  684  cat error1.yaml 
+  685  cat force.yaml 
+  686  cat error2.yaml 
+  687  vim error2.yaml 
+  688  ansible-playbook error2.yaml 
+  689  0.790264| float 
+  690  vim error2.yaml 
+  691  ansible-playbook error2.yaml 
+  692  vim error2.yaml 
+  693  ansible-playbook error2.yaml 
+  694  vim error2.yaml 
+  695  vim block_and_rescue_always.yaml
+  696  ansible-playbook  cleanup.yaml 
+  697  ansible-playbook block_and_rescue_always.yaml 
+  698  vim block_and_rescue_always.yaml 
+  699  ansible-playbook block_and_rescue_always.yaml 
+  700  vim block_and_rescue_always.yaml 
+  701  ansible-playbook block_and_rescue_always.yaml 
+  702  cat block_and_rescue_always.yaml 
+  703  ansible-doc  fail
+  704  vim fetch.yaml
+  705  ansible all -a 'ls -l /var/www/html/index.html'
+  706  ansible-playbook handlers.yaml 
+  707  ansible all -a 'ls -l /var/www/html/index.html'
+  708  ansible all -a 'cat /var/www/html/index.html'
+  709  ls
+  710  ansible-playbook --syntax-check fetch.yaml
+  711  ansible-playbook -C fetch.yaml
+  712  ansible-playbook  fetch.yaml
+  713  ls
+  714  ls files/
+  715  ls files/my.html/
+  716  ls files/my.html/servera.lab.example.com/var/www/html/
+  717  ls files/my.html/servera.lab.example.com/var/www/html/index.html 
+  718  rm -rf files
+  719  ls
+  720  vim copy.yaml
+  721  cp fetch.yaml copy.yaml 
+  722  vim copy.yaml
+  723  vim myindex.html
+  724  vim blockinfile.yaml
+  725  vim lineinfile.yaml
+  726  cp blockinfile.yaml lineinfile.yaml 
+  727  vim lineinfile.yaml
+  728  vim stat.yaml
+  729  cat lineinfile.yaml 
+  730  vim stat.yaml 
+  731  vim sefcontext .yaml
+  732  vim sefcontext.yaml
+  733  rm -f sefcontext
+  734  rm -f .yaml
+  735  vim sefcontext.yaml 
+  736  cp stat.yaml sefcontext.yaml
+  737  vim sefcontext.yaml 
+  738  ansible-doc sefcontext
+  739  vim sefcontext.yaml 
+  740  vim myindex.html 
+  741  vim sync.yaml
+  742  cat sefcontext.yaml 
+  743  vim sync.yaml
+  744  vim hosts.j2
+  745  ls
+  746  cat copy.yaml 
+  747  cat myindex.html 
+  748  ansible all -a 'cat /var/www/html/index.html' 
+  749  ansible-doc copy
+  750  ansible all -a 'cat /var/www/html/index.html' 
+  751  cat myindex.html 
+  752  ansible-playbook copy.yaml --syntax-check 
+  753  ansible-playbook copy.yaml 
+  754  ansible all -a 'cat /var/www/html/index.html' 
+  755  ls
+  756  cat fetch.yaml 
+  757  ansible-doc fetch.yaml 
+  758  ansible-doc fetch
+  759  vim fetch.yaml 
+  760  ls
+  761  cat fetch.yaml 
+  762  ansible-playbook fetch.yaml --syntax-check 
+  763  ansible-playbook fetch.yaml
+  764  ls
+  765  tree files/
+  766  cat fetch.yaml 
+  767  ansible all --list-hosts
+  768  vim inventory
+  769  ansible-playbook handlers.yaml 
+  770  tree files/
+  771  ansible-playbook fetch.yaml
+  772  tree files/
+  773  ls
+  774  cat blockinfile.yaml 
+  775  ansible-doc file
+  776  cat blockinfile.yaml 
+  777  ansible all -a 'ls -l /tmp/myfile_with_multiple_lines.txt' 
+  778  vim file.yaml
+  779  vim inventory
+  780  ansible all -a 'ls -l /tmp/myfile_with_multiple_lines.txt' 
+  781  ansible-playbook  file.yaml --syntax-check 
+  782  ansible-playbook  file.yaml 
+  783  ansible all -a 'ls -l /tmp/myfile_with_multiple_lines.txt' 
+  784  cat blockinfile.yaml 
+  785  ansible-playbook blockinfile.yaml --syntax-check 
+  786  ansible-playbook blockinfile.yaml 
+  787  ansible all -a 'ls -l /tmp/myfile_with_multiple_lines.txt' 
+  788  ansible all -a 'cat /tmp/myfile_with_multiple_lines.txt' 
+  789  grep ANSIBLE /etc/ansible/ansible.cfg 
+  790  grep MANAGE /etc/ansible/ansible.cfg 
+  791  grep MANAGED /etc/ansible/ansible.cfg 
+  792  vim /etc/ansible/ansible.cfg
+  793  ansible-doc lineinfile
+  794  cat lineinfile.yaml 
+  795  ansible-playbook lineinfile.yaml --syntax-check
+  796  ansible-playbook lineinfile.yaml 
+  797  ansible all -a 'cat /tmp/myfile_with_multiple_lines.txt' 
+  798  ls
+  799  ansible-doc stat.yaml 
+  800  ansible-doc stat
+  801  cat stat.yaml 
+  802  ansible-playbook stat.yaml --syntax-check 
+  803  ansible-playbook stat.yaml 
+  804  ansible all -a 'stat /tmp/myfile_with_multiple_lines.txt' 
+  805  ansible all -a 'md5sum /tmp/myfile_with_multiple_lines.txt' 
+  806  ansible-playbook stat.yaml 
+  807  ls
+  808  cat sync.yaml 
+  809  cat myindex.html 
+  810  ansible all -a 'cat /tmp/myfile_with_multiple_lines.txt' 
+  811  vim sync.yaml 
+  812  ansible-playbook sync.yaml --syntax-check
+  813  ansible-playbook sync.yaml 
+  814  ansible all -a 'cat /tmp/myfile_with_multiple_lines.txt' 
+  815  ansible all -a 'ls -lZ /tmp/myfile_with_multiple_lines.txt' 
+  816  ansible-doc  -l | grep se
+  817  ansible-doc sefcontext 
+  818  ansible all -a 'ls -lZ /tmp/myfile_with_multiple_lines.txt' 
+  819  cat sefcontext.yaml 
+  820  ansible-playbook sefcontext.yaml --syntax-check
+  821  ansible-playbook sefcontext.yaml 
+  822  ansible all -a 'ls -lZ /tmp/myfile_with_multiple_lines.txt' 
+  823  ssh servera -l root 
+  824  ansible-doc sefcontext 
+  825  vim sefcontext.yaml 
+  826  ansible all -a 'ls -lZ /tmp/myfile_with_multiple_lines.txt' 
+  827  ansible-playbook sefcontext.yaml 
+  828  ansible all -a 'ls -lZ /tmp/myfile_with_multiple_lines.txt' 
+  829  ansible-doc file
+  830  vim file.yaml 
+  831  cat file.yaml 
+  832  ansible-playbook file.yaml 
+  833  ansible all -a 'ls -lZ /tmp/myfile_with_multiple_lines.txt' 
+  834  vim hosts.j2 
+  835  vim mytemplate.yaml
+  836  vim inventory
+  837  cat mytemplate.yaml 
+  838  ansible-doc template
+  839  ls
+  840  cat mytemplate.yaml 
+  841  ansible-playbook mytemplate.yaml
+  842  ansible all -a 'cat /tmp/hosts' 
+  843  ansible all -m file -a 'path=/tmp/hosts state=absent' 
+  844  ansible all -m file -a 'path=/tmp/hosts state=absent' -b
+  845  cat mytemplate.yaml 
+  846  cat hosts.j2 
+  847  vim motd.j2
+  848  vim template.yaml
+  849  cat motd.j2 
+  850  cat template.yaml 
+  851  ansible all -a 'cat /etc/motd' -o 
+  852  vim motd.j2 
+  853  vim ansible.cfg 
+  854  cat motd.j2 
+  855  cat ansible.cfg 
+  856  ansible-doc template
+  857  cat template.yaml 
+  858  ansible all --list-hosts
+  859  ansible all -a 'cat /etc/motd'
+  860  ansible-playbook template.yaml --syntax-check
+  861  ansible-playbook template.yaml 
+  862  ansible all -a 'cat /etc/motd'
+  863  cat motd.j2 
+  864  sudo cat /etc/hosts 
+  865  cat hosts.j2 
+  866  ansible all --list-hosts
+  867  cat mytemplate.yaml 
+  868  ansible-playbook mytemplate.yaml --syntax-check
+  869  ansible-playbook mytemplate.yaml 
+  870  ansible all -a 'cat /tmp/hosts' 
+  871  sudo cat /etc/hosts 
+  872  vim hosts.j2 
+  873  ansible-playbook mytemplate.yaml 
+  874  ansible all -a 'cat /tmp/hosts' 
+  875  cat hosts.j2 
+  876  cat motd.j2 
+  877  ansible-config dump 
+  878  vim inventory1
+  879  ansible all --list-hosts -i inventory1
+  880  ansible 'server*' --list-hosts -i inventory1
+  881  ansible '*.example.com' --list-hosts -i inventory1
+  882  ansible '*.example.com, !*.lab.example.com'  --list-hosts -i inventory1
+  883  vim inventory2 
+  884  ansible 'mumbai,&dc1' - inventory2 
+  885  ansible 'mumbai,&dc1' -i inventory2 
+  886  ansible 'mumbai,&dc1' --list-hosts -i inventory2 
+  887  ansible 'mumbai,!dc1' --list-hosts -i inventory2 
+  888  ansible 'mumbai,dc1' --list-hosts -i inventory2 
+  889  cat play.yml 
+  890  vim import_playbook.yaml
+  891  vim inventory4
+  892  ansible-playbook  cleanup.yaml 
+  893  ansible-playbook  cleanup.yaml -i inventory4 
+  894  cat import_playbook.yaml
+  895  cat handlers.yaml 
+  896  ansible-playbook import_playbook.yaml -i inventory4 
+  897  curl http://servera.lab.example.com
+  898  ansible-playbook  cleanup.yaml -i inventory4 
+  899  vim include_tasks.yml
+  900  vim import_tasks.yml
+  901  vim include_tasks.yml 
+  902  vim import_tasks.yml 
+  903  cat inventory1
+  904  ansible all --list-hosts -i inventory1
+  905  ansible '*' --list-hosts -i inventory1 
+  906  ansible '*.example.com' --list-hosts -i inventory1 
+  907  ansible '*.example.com, !*.lab.exmaple.com' --list-hosts -i inventory1 
+  908  ansible '*.example.com, !*.lab.example.com' --list-hosts -i inventory1 
+  909  ansible 's*,172*' --list-hosts -i inventory1
+  910  cat inventory2
+  911  ansible dc1 --list-hosts -i inventory2
+  912  cat inventory2
+  913  ansible dc2,mumbai --list-hosts -i inventory2
+  914  ansible 'dc1,&mumbai' --list-hosts -i inventory2
+  915  ls
+  916  ping 8.8.8.8
+  917  cd 
+  918  cd config/
+  919  ls
+  920  cat import_playbook.yaml 
+  921  cat handlers.yaml 
+  922  cat import_playbook.yaml 
+  923  ansible all --list-hosts -i inventory4 
+  924  ansible-playbook import_playbook.yaml -i inventory4
+  925  curl http://servera.lab.example.com
+  926  vim import_playbook.yaml 
+  927  cat play.yml 
+  928  cat import_playbook.yaml 
+  929  vim import_playbook.yaml 
+  930  ansible-playbook import_playbook.yaml -i inventory4
+  931  cat include_tasks.yml 
+  932  cat import_tasks.yml 
+  933  ansible-playbook import_tasks.yml --syntax-check
+  934  ansible-playbook import_tasks.yml -i inventory4 
+  935  ansible all -a 'cat /tmp/myfile.txt' -i inventory4 
+  936  ansible all -a 'rpm -qa telnet' -i inventory4 
+  937  cat include_tasks.yml
+  938  cat import_tasks.yml 
+  939  ls
+  940  vim vars.yaml
+  941  ansible-playbook  vars.yaml -i inventory4 
+  942  vim vars.yaml 
+  943  ansible all -m yum -a 'name=telnet state=absent' -i inventory4 
+  944  ansible all -m yum -a 'name=telnet state=absent' -i inventory4 -b 
+  945  ansible all -m yum -a 'name=zsh state=absent' -i inventory4 -b 
+  946  ansible-playbook  cleanup.yaml -i inventory4 
+  947  ansible-playbook  vars.yaml -i inventory4 
+  948  ansible all -a 'rpm -qa telnet httpd tree' -i inventory4
+  949  ansible-playbook  vars.yaml -i inventory4 
+  950  ansible all -a 'rpm -qa telnet httpd tree' -i inventory4
+  951  cat vars.yaml 
+  952  ls
+  953  ansible-galaxy 
+  954  ansible-galaxy list
+  955  ansible-galaxy init -h
+  956  ansible-galaxy init firewall
+  957  ls
+  958  ls firewall/
+  959  vim firewall/tasks/main.yml 
+  960  ansible-playbook cleanup.yaml -i inventory4 
+  961  cp handlers.yaml normalweb.yaml
+  962  vim normalweb.yaml
+  963  ansible-playbook normalweb.yaml -i inventory4 
+  964  curl http://servera.lab.example.com
+  965  vim normalweb.yaml 
+  966  ls
+  967  vim normalweb.yaml 
+  968  mkdir roles 
+  969  rsync -av firewall roles/
+  970  vim ansible.cfg 
+  971  ansible-galaxy list
+  972  ansible-playbook normalweb.yaml -i inventory4 
+  973  curl http://servera.lab.example.com
+  974  ls
+  975  tree firewall/
+  976  tar cvzf firewall.tar.gz firewall/
+  977  ls -l 
+  978  ls
+  979  rm -rf roles/firewall/
+  980  vim requirements.yaml
+  981  mv requirements.yaml roles/
+  982  ansible-galaxy list 
+  983  ansible-galaxy install -r roles/requirements.yaml -p roles/
+  984  vim roles/requirements.yaml
+  985  ansible-galaxy install -r roles/requirements.yaml -p roles/
+  986  vim roles/requirements.yaml
+  987  ansible-galaxy install -r roles/requirements.yaml -p roles/
+  988  vim copy.yaml 
+  989  cp copy.yaml serverd.yaml
+  990  vim serverd.yaml 
+  991  ansible-playbook serverd.yaml 
+  992  curl http://serverd.lab.example.com
+  993  vim roles/requirements.yaml 
+  994  ansible-galaxy list
+  995  vim ansible.cfg 
+  996  ansible-galaxy list
+  997  ansible-galaxy install -r roles/requirements.yaml -p roles/
+  998  ls roles/
+  999  ansible-galaxy list
+ 1000  cat roles/requirements.yaml 
+ 1001  rm -rf firewall
+ 1002  rm -rf roles
+ 1003  ls
+ 1004  rm -f firewall.tar.gz 
+ 1005  ls
+ 1006  cat normalweb.yaml 
+ 1007  vim normalweb.yaml 
+ 1008  ansible-playbook cleanup.yaml -i inventory4 
+ 1009  ls
+ 1010  cat file.yaml 
+ 1011  cat blockinfile.yaml 
+ 1012  cat lineinfile.yaml 
+ 1013  cat copy.yaml 
+ 1014  cat fetch.yaml 
+ 1015  tree files/
+ 1016  cat stat.yaml 
+ 1017  cat sync.yaml 
+ 1018  ls
+ 1019  cat motd.j2 
+ 1020  grep managed ansible.cfg 
+ 1021  cat template.yaml 
+ 1022  cat hosts.j2 
+ 1023  cat mytemplate.yaml 
+ 1024  cat inventory1 
+ 1025  history  
+ 1026  cat inventory2
+ 1027  ansible 'dc1,&mumbai' --list-hosts -i inventory2
+ 1028  cat import_playbook.yaml 
+ 1029  cat include_tasks.yml 
+ 1030  cat import_tasks.yml 
+ 1031  cat import_playbook.yaml 
+ 1032  ls
+ 1033  mkdir roles
+ 1034  cd roles/
+ 1035  ls
+ 1036  ansible-galaxy -h
+ 1037  ansible-galaxy list
+ 1038  ansible-galaxy init user.example
+ 1039  tree user.example/
+ 1040  cd user.example/
+ 1041  cat defaults/main.yml 
+ 1042  cat tasks/main.yml 
+ 1043  tree .
+ 1044  cd ../..
+ 1045  ls
+ 1046  grep roles_path /etc/ansible/ansible.cfg 
+ 1047  ls /usr/share/ansible/roles/
+ 1048  vim ansible.cfg 
+ 1049  ls roles/
+ 1050  ansible-galaxy list
+ 1051  rm -rf roles/user.example/
+ 1052  rm -rf roles/user.example
+ 1053  ansible-galaxy list
+ 1054  cat normalweb.yaml 
+ 1055  ansible-playbook normalweb.yaml --syntax-check 
+ 1056  ansible-playbook normalweb.yaml 
+ 1057  curl http://servera.lab.example.com
+ 1058  ansible all --list-all 
+ 1059  ansible all --list-hosts 
+ 1060  cat normalweb.yaml 
+ 1061  ssh servera 
+ 1062  curl http://servera.lab.example.com
+ 1063  cd roles/
+ 1064  ansible-galaxy init firewall
+ 1065  tree firewall/
+ 1066  cd firewall/tasks/
+ 1067  ls
+ 1068  vim main.yml 
+ 1069  cd ..
+ 1070  ls
+ 1071  vim vars/main.yml 
+ 1072  cat tasks/main.yml 
+ 1073  cat tests/test.yml 
+ 1074  cd ..
+ 1075  vim normalweb.yaml 
+ 1076  ansible-playbook normalweb.yaml --syntax-check 
+ 1077  ansible-playbook normalweb.yaml 
+ 1078  curl http://servera.lab.example.com
+ 1079  cat normalweb.yaml 
+ 1080  grep roles ansible.cfg 
+ 1081  ansible --version
+ 1082  cat roles/firewall/tests/test.yml 
+ 1083  tree roles/firewall/
+ 1084  rm -rf roles/firewall
+ 1085  ansible-playbook  normalweb.yaml 
+ 1086  ssh serverd.lab.example.com 
+ 1087  vim roles/requirements.yaml
+ 1088* ansible-playbook  --hel
+ 1089  cat roles/requirements.yaml
+ 1090  ansible-galaxy install -h
+ 1091  ansible-galaxy role install -p roles/ -r roles/requirements.yaml 
+ 1092  ansible-galaxy role list 
+ 1093  tree roles/
+ 1094  cat roles/firewall/tasks/main.yml 
+ 1095  ansible-playbook  normalweb.yaml 
+ 1096  ansible-playbook cleanup.yaml -i inventory4 
+ 1097  ansible-playbook  normalweb.yaml 
+ 1098  curl http://servera.lab.example.com
+ 1099  vim normalweb.yaml 
+ 1100  cd roles/
+ 1101  ansible-galaxy init apache
+ 1102  vim ../normalweb.yaml 
+ 1103  vim apache/tasks/main.yml 
+ 1104  vim apache/handlers/main.yml 
+ 1105  cat apache/handlers/main.yml 
+ 1106  cat apache/tasks/main.yml 
+ 1107  vim ../normalweb.yaml 
+ 1108  cd ..
+ 1109  ansible-galaxy role list 
+ 1110  ansible-playbook cleanup.yaml -i inventory4 
+ 1111  ansible-playbook --syntax-check normalweb.yaml 
+ 1112  ansible-playbook normalweb.yaml 
+ 1113  curl http://servera.lab.example.com
+ 1114  vim roles/apache/meta/main.yml 
+ 1115  ansible-playbook cleanup.yaml -i inventory4 
+ 1116  vim normalweb.yaml 
+ 1117  ansible-playbook normalweb.yaml 
+ 1118  cat roles/requirements.yaml 
+ 1119  ansible-galaxy install -h
+ 1120  cat roles/requirements.yaml 
+ 1121  cat normalweb.yaml 
+ 1122  cat set-selinux.yaml 
+ 1123  cat roles/requirements.yaml 
+ 1124  sudo yum info rhel-system-roles
+ 1125  ansible-galaxy role list 
+ 1126  sudo yum install rhel-system-roles 
+ 1127  ansible-galaxy role list 
+ 1128  rpm -qd rhel-system-roles
+ 1129  less /usr/share/doc/rhel-system-roles/timesync/README.md
+ 1130  less /usr/share/doc/rhel-system-roles/selinux/README.md
+ 1131  cat inventory3 
+ 1132  ssh s erverb -l root 
+ 1133  ssh serverb -l root 
+ 1134  cat set-selinux.yaml 
+ 1135  ansible-playbook set-selinux.yaml --syntax-check 
+ 1136  ansible-playbook set-selinux.yaml -i inventory3 
+ 1137  ansible all -a 'sestatus' -i inventory3
+ 1138  ansible all -a 'cat /etc/selinux/config' -i inventory3
+ 1139  ssh serverb -l root 
+ 1140  ansible all -a 'cat /etc/selinux/config' -i inventory3
+ 1141  ansible all -a 'sestatus' -i inventory3
+ 1142  ansible-playbook set-selinux.yaml -i inventory3 
+ 1143  vim set-selinux.yaml 
+ 1144  ansible all -a 'cat /etc/selinux/config' -i inventory3
+ 1145  ansible all -a 'sestatus' -i inventory3
+ 1146  ssh serverb -l root 
+ 1147  vim set-selinux.yaml 
+ 1148  cat set-selinux.yaml 
+ 1149  ansible all -a 'cat /etc/selinux/config' -i inventory3
+ 1150  ansible all -a 'sestatus' -i inventory3
+ 1151  ansible-playbook set-selinux.yaml -i inventory3 
+ 1152  ansible all -a 'cat /etc/selinux/config' -i inventory3
+ 1153  ansible all -a 'sestatus' -i inventory3
+ 1154  cat set-selinux.yaml 
+ 1155  ssh serverb -l root 
+ 1156  ansible-playbook set-selinux.yaml -i inventory3 
+ 1157  cat set-selinux.yaml 
+ 1158  rpm -qd rhel-system-roles
+ 1159  ansible-galaxy role list 
+ 1160  ansible all --list-hosts
+ 1161  ansible all -a 'lsblk'
+ 1162  cat set-selinux.yaml 
+ 1163  ansible-galaxy role search 'haproxy'
+ 1164  ansible-galaxy role search 'haproxy' --platform EL
+ 1165  ansible-galaxy role search 'haproxy'
+ 1166  ansible-galaxy role search 'haproxy' --platform EL
+ 1167  ansible-galaxy role info geerlingguy.haproxy
+ 1168  ansible-galaxy role list 
+ 1169  # ansible-galaxy role install geerlingguy.haproxy -p roles/
+ 1170  tree  roles/
+ 1171  ls roles/
+ 1172  ansible-galaxy role install geerlingguy.haproxy -p roles/
+ 1173  ls roles/
+ 1174  cat roles/requirements.yaml 
+ 1175  vim roles/requirements.yaml
+ 1176  ansible-galaxy role list 
+ 1177  ansible-galaxy role remove  geerlingguy.haproxy
+ 1178  ansible-galaxy role remove apache
+ 1179  ansible-galaxy remove apache
+ 1180  ansible-galaxy install geerlingguy.haproxy
+ 1181  ansible-galaxy install geerlingguy.haproxy --force
+ 1182  ansible-galaxy remove geerlingguy.haproxy
+ 1183  ls roles/
+ 1184  ansible-galaxy role remove -h 
+ 1185  ansible-galaxy remove geerlingguy.haproxy -p roles/
+ 1186  ansible-galaxy role remove -h 
+ 1187  ansible-galaxy role list 
+ 1188  cat ansible.cfg 
+ 1189  cat inventory
+ 1190  vim inventory
+ 1191  ansible all --list-hosts
+ 1192  ansible-galaxy collection list 
+ 1193  ansible-galaxy collection init
+ 1194  mkdir collections 
+ 1195  ansible-galaxy collection init --init-path collections/ mycollection
+ 1196  ansible-galaxy collection init --init-path collections/ community.mycollection
+ 1197  tree collections/
+ 1198  ansible-galaxy collection install aramirol.linux -h
+ 1199  ansible-galaxy collection install aramirol.linux -p collections
+ 1200  tree collections/
+ 1201  ls collections/
+ 1202  ls collections/ansible_collections/
+ 1203  ls collections/ansible_collections/aramirol/
+ 1204  ls collections/ansible_collections/aramirol/linux/
+ 1205  ls collections/ansible_collections/aramirol/linux/plugins/
+ 1206  ls collections/ansible_collections/aramirol/linux/roles/
+ 1207  ansible-galaxy collection install http://materials.example.com/labs/role-collections/redhat-rhel_system_roles-1.0.1.tar.gz
+ 1208  ls -al /home/student/.ansible/collections/ansible_collections/redhat/rhel_system_roles
+ 1209  ls /home/student/.ansible/collections/ansible_collections/redhat/rhel_system_roles
+ 1210  ls /home/student/.ansible/collections/ansible_collections/redhat/rhel_system_roles/plugins/
+ 1211  ls /home/student/.ansible/collections/ansible_collections/redhat/rhel_system_roles/plugins/modules/
+ 1212  ls /home/student/.ansible/collections/ansible_collections/redhat/rhel_system_roles/roles/
+ 1213  cat /home/student/.ansible/collections/ansible_collections/redhat/rhel_system_roles/README.md 
+ 1214  grep -i collect /etc/ansible/ansible.cfg 
+ 1215  vim ansible.cfg 
+ 1216  grep -i galaxy /etc/ansible/ansible.cfg
+ 1217  vim ansible.cfg 
+ 1218  cat roles/requirements.yaml 
+ 1219  vim roles/requirements.yaml
+ 1220  ls /home/student/.ansible/collections/ansible_collections/redhat/rhel_system_roles/plugins/modules/
+ 1221  ansible-doc redhat.rhel-system-roles.blockdev_info
+ 1222  ansible-doc redhat.rhel_system_roles.blockdev_info 
+ 1223  ansible-playbook  --check --diff mytemplate.yaml 
+ 1224  vim inventory
+ 1225  ansible-playbook  --check --diff mytemplate.yaml 
+ 1226  vim checkmem.sh
+ 1227  chmod +x checkmem.sh
+ 1228  sh checkmem.sh
+ 1229  vim checkmem.sh
+ 1230  sh checkmem.sh
+ 1231  vim checkmem.sh
+ 1232  sh checkmem.sh
+ 1233  vim checkmem.sh
+ 1234  sh checkmem.sh
+ 1235  vi scriptmodule.yaml
+ 1236  ansible-playbook  scriptmodule.yaml --syntax-check
+ 1237  ansible-playbook  scriptmodule.yaml 
+ 1238  ansible-playbook  scriptmodule.yaml  -v
+ 1239  vi scriptmodule.yaml
+ 1240  ansible-playbook  scriptmodule.yaml 
+ 1241  vi scriptmodule.yaml
+ 1242  ansible-playbook  scriptmodule.yaml 
+ 1243  history 
+ 1244  ls
+ 1245  vim lvm.yaml
+ 1246  ansible all -m setup 
+ 1247  ansible serverb.lab.example.com -m setup 
+ 1248  lab troubleshoot-playbook start 
+ 1249  ls ~/troubleshoot-playbook/
+ 1250  echo $ANSIBLE_LOG_PATH
+ 1251  vim ansible.cfg 
+ 1252  grep log ansible.cfg
+ 1253  ls ansible.log
+ 1254  cat play.yml 
+ 1255  ansible-playbook  play.yml 
+ 1256  ls ansible.log
+ 1257  tail ansible.
+ 1258  tail ansible.log 
+ 1259  ansible-doc debug
+ 1260  ansible-playbook  play1.yml -v
+ 1261  ansible-playbook  play1.yml
+ 1262  lab troubleshoot-playbook start 
+ 1263  cd /home/student/troubleshoot-playbook/
+ 1264  ls
+ 1265  cat inventory 
+ 1266  vim ansible.cfg
+ 1267  ansible --version
+ 1268  ls
+ 1269  ansible-playbook  samba.yml --syntax-check
+ 1270  vim samba.yml 
+ 1271  ansible-playbook  samba.yml --syntax-check
+ 1272  vim +44 samba.yml 
+ 1273  ansible-playbook  samba.yml --syntax-check
+ 1274  vim samba.yml 
+ 1275  ansible-playbook  samba.yml --syntax-check
+ 1276  ansible-playbook  samba.yml --check
+ 1277  ansible all -m ping 
+ 1278  nslookup servera.lab.exammple.com
+ 1279  dig -x servera.lab.exammple.com
+ 1280  vim inventory 
+ 1281  ansible all -m ping 
+ 1282  ansible-playbook  samba.yml --check
+ 1283  vim samba.yml 
+ 1284  ls
+ 1285  vim samba.yml 
+ 1286  ansible-playbook  samba.yml --check
+ 1287  cd  
+ 1288  lab troubleshoot-playbook finish 
+ 1289  cd config/
+ 1290  ls
+ 1291  history 
+ 1292  ansible serverb.lab.example.com -m setup  -a filter="ansible_lvm"
+ 1293  ansible serverb.lab.example.com -m setup  -a 'filter="ansible_lvm"'
+ 1294  ansible all --version
+ 1295  ansible all --list-all
+ 1296  ansible all --list-hosts
+ 1297  ansible-playbook --check mytemplate.yaml 
+ 1298  ansible-playbook --check --diff mytemplate.yaml 
+ 1299  vim play.yml 
+ 1300  ansible servera.lab.example.com -m yum -a 'name=httpd state=absent' -b 
+ 1301  ansible-playbook  --check play.yml 
+ 1302  vim play.yml 
+ 1303  ansible-playbook  --check play.yml 
+ 1304  #  uri == web service 
+ 1305  # stat -- to check whetehr file exists on th emanage host 
+ 1306  ansible-doc scriptmodule.yaml 
+ 1307  ansible-doc script
+ 1308  cat checkmem.sh 
+ 1309  cat scriptmodule.yaml 
+ 1310  ansible-playbook  scriptmodule.yaml
+ 1311  ansible-doc fail
+ 1312  ansible-doc assert
+ 1313  vim assert.yaml
+ 1314  vim list.yml
+ 1315  cat list.yml 
+ 1316  vim assert.yaml
+ 1317  cat assert.yaml 
+ 1318  ansible-playbook assert.yaml --syntax-check 
+ 1319  ansible-playbook assert.yaml
+ 1320  vim assert.yaml
+ 1321  ansible-playbook assert.yaml
+ 1322  cat assert.yaml
+ 1323  ansible all -m ping 
+ 1324  ansible all -m ping --become 
+ 1325  ansible all -m ping -K 
+ 1326  lab system-storage start 
+ 1327  cd 
+ 1328  cd system-storage/
+ 1329  ls
+ 1330  cat ansible.cfg 
+ 1331  cat inventory 
+ 1332  cat storage_vars.yml 
+ 1333  cat storage.yml 
+ 1334  cd
+ 1335  ls
+ 1336  cd 
+ 1337  cd -
+ 1338  cd config/
+ 1339  ls
+ 1340  ansible serverb.lab.example.com -m setup 
+ 1341  cd -
+ 1342  cd system-storage/
+ 1343  ansible-playbook storage
+ 1344  ansible-playbook storage.yml 
+ 1345  vim storage.yml 
+ 1346  ansible all -m setup -a 'filter=ansible_lvm'
+ 1347  history 
+ 1348  ansible all -m setup -a 'filter=ansible_lvm'
+ 1349  ls
+ 1350  cat ansible.cfg 
+ 1351  cat inventory 
+ 1352  ansible-playbook storage.yml 
+ 1353  ansible all -m setup -a 'filter=ansible_lvm'
+ 1354  vim storage.yml 
+ 1355  ansible-playbook storage.yml 
+ 1356  vim storage.yml 
+ 1357  ansible-playbook storage.yml 
+ 1358  ansible all -a lsblk
+ 1359  vim storage_vars.yml 
+ 1360  ansible-playbook storage.yml 
+ 1361  ansible all -a lsblk
+ 1362  cd
+ 1363  cp system-storage/storage.yml .
+ 1364  lab system-storage finish 
+ 1365  ssh servera -l root 
+ 1366  ssh serverb -l root 
+ 1367  lsblk 
+ 1368  cd config/
+ 1369  vim inventory
+ 1370  ansible all --list-hosts
+ 1371  ansible al l-a 'lsblk'
+ 1372  ansible all -a 'lsblk'
+ 1373  vim lvm.yaml 
+ 1374  ansible all -m setup 
+ 1375  vim lvm.yaml 
+ 1376  ansible all -m setup 
+ 1377  vim lvm.yaml 
+ 1378  ansible-playbook lvm.yaml --syntax-check 
+ 1379  vim lvm.yaml 
+ 1380  ansible-playbook lvm.yaml --syntax-check 
+ 1381  vim lvm.yaml 
+ 1382  ansible-playbook lvm.yaml --syntax-check 
+ 1383  vim lvm.yaml 
+ 1384  ansible-playbook lvm.yaml --syntax-check 
+ 1385  vim lvm.yaml 
+ 1386  ansible-playbook lvm.yaml --syntax-check 
+ 1387  vim lvm.yaml 
+ 1388  ansible-playbook lvm.yaml --syntax-check 
+ 1389  ansible-playbook lvm.yaml --step
+ 1390  vim lvm.yaml 
+ 1391  ansible-playbook lvm.yaml --syntax-check 
+ 1392  vim lvm.yaml 
+ 1393  ansible-playbook lvm.yaml --syntax-check 
+ 1394  vim lvm.yaml 
+ 1395  ansible-playbook lvm.yaml --syntax-check 
+ 1396  ansible-playbook lvm.yaml --step
+ 1397  vim lvm.yaml 
+ 1398  ansible-playbook lvm.yaml --start-at-task="Display the custom message if size is not available"
+ 1399  vim lvm.yaml 
+ 1400  ansible-playbook lvm.yaml --start-at-task="Display the custom message if size is not available"
+ 1401  vim lvm.yaml 
+ 1402  ansible-playbook lvm.yaml --start-at-task="Display the custom message if size is not available"
+ 1403  vim lvm.yaml 
+ 1404  ansible-playbook lvm.yaml --start-at-task="Display the custom message if size is not available"
+ 1405  vim lvm.yaml 
+ 1406  ansible all -a 'lsblk'
+ 1407  cp lvm.yaml create_lvm.yml
+ 1408  mv lvm.yaml /home/student/
+ 1409  cp create_lvm.yml delete_lvm.yml
+ 1410  vim delete_lvm.yml
+ 1411  ansible-playbook delete_lvm.yml --syntax-check
+ 1412  ansible-playbook delete_lvm.yml 
+ 1413  vim delete_lvm.yml
+ 1414  ansible-playbook delete_lvm.yml 
+ 1415  vim delete_lvm.yml
+ 1416  ansible-playbook delete_lvm.yml 
+ 1417  vim delete_lvm.yml
+ 1418  ansible-playbook delete_lvm.yml 
+ 1419  vim delete_lvm.yml
+ 1420  ansible-playbook delete_lvm.yml 
+ 1421  vim delete_lvm.yml
+ 1422  ansible-playbook delete_lvm.yml 
+ 1423  vim delete_lvm.yml
+ 1424  ansible-playbook delete_lvm.yml 
+ 1425  ansible all -a 'lvs'
+ 1426  ansible-playbook create_lvm.yml 
+ 1427  ansible all -a 'lvs'
+ 1428  ansible-playbook delete_lvm.yml 
+ 1429  vim delete_lvm.yml
+ 1430  ansible-playbook delete_lvm.yml --start-at-task="Remove the logical volume"
+ 1431  ansible all -a 'lvs'
+ 1432  vim delete_lvm.yml 
+ 1433  cp normalweb.yaml web_with_multiple_roles.yaml
+ 1434  ls -ltr 
+ 1435  vim create_partition.yml
+ 1436  vim inventory4
+ 1437  vim inventory5
+ 1438  ansible-playbook  create_partition.yml -i inventory5 
+ 1439  vim create_partition.yml 
+ 1440  ansible-playbook  create_partition.yml -i inventory5 
+ 1441  cat create_partition.yml 
+ 1442  cp delete_lvm.yml delete_partition.yml
+ 1443  vim delete_partition.yml 
+ 1444  ansible-playbook delete_partition.yml --syntax-check 
+ 1445  ansible-playbook delete_partition.yml --syntax-check -i inventory5 
+ 1446  ansible-playbook delete_partition.yml -i inventory5 
+ 1447  vim delete__p
+ 1448  vim delete_partition.yml 
+ 1449  cat delete_partition.yml
+ 1450  mv delete_partition.yml /home/student/
+ 1451  mv create_partition.yml /home/student/
+ 1452  ls
+ 1453  ls -ltr 
+ 1454  ls-ltr 
+ 1455  ls -ltr 
+ 1456  vim play.yml 
+ 1457  cp play.yml usageofyum.yml
+ 1458  vim usageofyum.yml
+ 1459  sudo yum grouplist 
+ 1460  vim usageofyum.yml
+ 1461  ansible-playbook usageofyum.yml --syntax-check 
+ 1462  ansible-playbook usageofyum.yml -C
+ 1463  ansible-playbook usageofyum.yml
+ 1464  vim usageofyum.yml
+ 1465  ansible all -a 'rpm -qa httpd'
+ 1466* vim usageofyum.ym
+ 1467  ansible-doc -l | grep package 
+ 1468  ansible-doc package_facts
+ 1469  ansible-doc package
+ 1470  # package_facts 
+ 1471  # package 
+ 1472  subscription-manager --help
+ 1473  subscription-manager repos --help
+ 1474  ansible-doc | grep subscription
+ 1475  ansible-doc -l | grep subscription
+ 1476  # redhat_subscription
+ 1477  # rhsm_repository
+ 1478  ansible-doc redhat_subscription
+ 1479  ansible-doc rhsm_repository
+ 1480  # rhsm_repository
+ 1481  # redhat_subscription
+ 1482  ls /etc/yum.repos.d/
+ 1483  cat /etc/yum.repos.d/additional.repo 
+ 1484  ansible-doc  -l | grep yum 
+ 1485  vim yumclient.yml
+ 1486  cat yumclient.yml 
+ 1487  cat inventory5 
+ 1488  ansible-playbook --syntax-check yumclient.yml -i inventory5
+ 1489  ansible-playbook -C yumclient.yml -i inventory5
+ 1490  ansible-playbook yumclient.yml -i inventory5
+ 1491  ansible-doc  -l | grep rpm 
+ 1492  ansible-doc rpm_key
+ 1493  vim yumclient.yml
+ 1494  ansible-playbook yumclient.yml -i inventory5
+ 1495  ls -ltr 
+ 1496  cat usageofyum.yml 
+ 1497  cat yumclient.yml 
+ 1498  ansible-doc parted
+ 1499  ansible-doc filesystem
+ 1500  ansible-doc  mount
+ 1501  ansible all -m setup -a filter="ansible_lvm" 
+ 1502  ansible all -m setup 
+ 1503  cat ansible.cfg 
+ 1504  ansible-galaxy list
+ 1505  rpm -qd rhel-system-roles | grep network
+ 1506  cat /usr/share/doc/rhel-system-roles/network/README.md
+ 1507  ansible-galaxy list 
+ 1508  rpm -qd rhel-system-roles | grep network
+ 1509  less /usr/share/doc/rhel-system-roles/network/README.md
+ 1510  nmcli connection show 
+ 1511  ansible-doc nmcli
+ 1512  !
+ 1513  ansible-doc firewalld
+ 1514  man -k firewalld
+ 1515  man firewalld.richlanguage
+ 1516  ansible-doc firewalld
+ 1517  ansible all -m setup -a 'gather_subnet=network' 
+ 1518  ansible all -m setup -a 'gather_subset=network' 
+ 1519  ansible all -m setup -a 'gather_subset=network filter=ansible_interfaces' 
+ 1520  _facts": {
+        "ansible_interfaces": [
+            "lo",
+ 1521  ansible all -m setup -a 'filter=ansible*' 
+ 1522  history 
+ 1523  history  > commands.txt

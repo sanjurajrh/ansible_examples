@@ -1,0 +1,8 @@
+---
+- name: Using the lookup plugin to view content of the file
+  hosts: all
+  tasks:
+  - name: read the content of the file 
+    debug:
+      msg: "The content of the file is {{ lookup('file', '/etc/hosts', '/etc/issue') }}"
+...

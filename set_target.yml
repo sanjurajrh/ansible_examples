@@ -1,0 +1,11 @@
+---
+- name: Set the default target
+  hosts: all
+  become: true
+  tasks:
+  - name: Set the multiuser target as default
+    file:
+      src: /usr/lib/systemd/system/multi-user.target
+      dest: /etc/systemd/system/default.target
+      state: link
+...

@@ -1,0 +1,26 @@
+---
+- name: Create partition
+  hosts: all
+  become: true
+  tasks:
+  - name: Create partition of /dev/vdb disk
+    parted:
+      device: /dev/vdb
+      state: present
+      number: 1
+      part_end: 201MiB
+  - name: Create the mountpoint /datadir
+    file:
+      path: /datadir
+      state: directory
+  - name: Format the filesystem
+    filesystem:
+      dev: /dev/vdb1
+      fstype: ext4
+  - name: Mount the filesystem
+    mount: 
+      fstype: ext4
+      path: /datadir
+      src: /dev/vdb1
+      state: mounted
+...

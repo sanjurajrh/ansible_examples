@@ -1,0 +1,14 @@
+---
+- name: Create diffreent set of users 
+  hosts: serverd.lab.example.com
+  become: true
+  tasks:
+  - name: Create users from the list 
+    user:
+      name: "{{ item.name }}"
+      groups: "{{ item.groups }}"
+      state: present
+    loop:
+    - { name: 'testuser1', groups: 'wheel' }
+    - { name: 'testuser2', groups: 'apache' }
+...

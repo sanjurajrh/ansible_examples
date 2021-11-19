@@ -1,0 +1,13 @@
+---
+- name: Using at module
+  hosts: serverd.lab.example.com
+  become: true
+  tasks:
+  - name: One time job
+    at:
+      command: "date> /tmp/current_date.txt\n"
+      count: 1
+      units: minutes
+      unique: yes
+      state: present
+...

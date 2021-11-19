@@ -1,0 +1,13 @@
+# ansible all  -i inventory1 -m user -a 'name=alice state=absent' -b
+---
+- name: Purpose of the playbook
+  hosts: servera.lab.example.com
+  become: true
+  tasks:
+  - name: Package to be installed
+    command: rpm -qa httpd
+    register: pkg_status
+  - name: Print the custom message
+    debug:
+      var: pkg_status.stdout
+...

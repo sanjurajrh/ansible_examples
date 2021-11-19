@@ -1,0 +1,11 @@
+---
+- name: Check the list 
+  hosts: all
+  vars_files: 
+  - list.yml
+  tasks:
+  - name: get the 3rd elemenet from the list 
+    assert:
+      that: 
+      - region[1] == 'east'
+...

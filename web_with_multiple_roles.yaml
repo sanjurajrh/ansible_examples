@@ -1,0 +1,15 @@
+---
+- name: Deploy a web server
+  hosts: servera.lab.example.com
+  become: true
+  pre_tasks:
+  - name: Deployment has been started
+    debug:
+      msg: "Deployment in progress..."
+  roles:
+  - apache
+  post_tasks:
+  - name: Result
+    debug:
+      msg: "Deployment has been successful"
+...

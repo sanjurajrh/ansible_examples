@@ -1,0 +1,12 @@
+---
+- name: Using script module
+  hosts: all
+  become: true
+  tasks:
+  - name: Get free memory information
+    script: /home/student/config/checkmem.sh
+    register: result
+  - name: Print the free memory available
+    debug:
+      var: result.stdout
+    

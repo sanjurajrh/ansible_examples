@@ -1,0 +1,48 @@
+---
+- name: Delete lvm and get it unmounted
+  hosts: all
+  become: true
+  vars:
+    volgroup:
+      - vgname: myvol
+        lvname: mylvm
+  tasks:
+  - name: Display the custom message
+    debug:
+      msg: "The volume group doesnot exists"
+    loop: "{{ volgroup }}"
+    when: item.vgname not in ansible_lvm['vgs']
+  - name: Remove the entry from /etc/fstab
+    lineinfile:
+      path: /etc/fstab
+      regexp: "^/dev/{{ item.vgname }}/{{ item.lvname }}"
+      state: absent
+    loop: "{{ volgroup }}"
+    when: 
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+  - name: Umount the filesystem
+    command: umount "/dev/{{ item.vgname }}/{{ item.lvname }}"
+    loop: "{{ volgroup }}"
+    when:
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+  - name: Delete the directory
+    file:
+      path: /mnt/lvm
+      state: absent
+    loop: "{{ volgroup }}"
+    when:
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+  - name: Remove the logical volume
+    lvol:
+      vg: "{{ item.vgname }}"
+      lv: "{{ item.lvname }}"
+      state: absent
+      force: yes
+    loop: "{{ volgroup }}"
+    when:
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+...

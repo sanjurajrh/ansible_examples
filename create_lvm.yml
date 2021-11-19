@@ -1,0 +1,63 @@
+---
+- name: Create lvm and get it mounted
+  hosts: all
+  become: true
+  vars:
+    volgroup:
+      - vgname: myvol
+        lvname: mylvm
+  tasks:
+  - name: Display the custom message
+    debug:
+      msg: "The volume group doesnot exists"
+    loop: "{{ volgroup }}"
+    when: item.vgname not in ansible_lvm['vgs']
+  - name: Create a logical volume of 500M
+    lvol:
+      vg: "{{ item.vgname }}"
+      lv: "{{ item.lvname }}"
+      size: 500m
+    loop: "{{ volgroup }}"
+    when: 
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+    - ansible_lvm['vgs']['myvol']['size_g']  >= '0.50'
+  - name: Display the custom message if size is not available
+    debug:
+      msg: "Cannot create the lvm of 500M size due to insufficient space"
+    loop: "{{ volgroup }}"
+    when:
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+    - ansible_lvm['vgs']['myvol']['size_g']  < '0.50'
+  - name: Create a logical volume of 200M
+    lvol:
+      vg: "{{ item.vgname }}"
+      lv: "{{ item.lvname }}"
+      size: 200m
+    loop: "{{ volgroup }}"
+    when: 
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+    - ansible_lvm['vgs']['myvol']['size_g']  < '0.50'
+  - name: Format the logicla volume
+    filesystem:
+      fstype: xfs
+      dev: "/dev/{{ item.vgname }}/{{ item.lvname }}"
+    loop: "{{ volgroup }}"
+    when:
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+    register: filesystem_status
+  - name: Mount the lvm to the mount path
+    mount:
+      path: /mnt/lvm
+      src: "/dev/{{ item.vgname }}/{{ item.lvname }}"
+      fstype: xfs
+      state: mounted
+    loop: "{{ volgroup }}"
+    when:
+    - item.vgname in ansible_lvm['vgs']
+    - ansible_lvm.vgs is defined
+    - filesystem_status is success 
+...

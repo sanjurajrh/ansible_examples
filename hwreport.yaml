@@ -1,0 +1,90 @@
+cat hwreport.yml
+---
+- name: Generate a hardware report
+  hosts: all
+  tasks:
+    - name: Download the file
+      get_url:
+        url: http://content.example.com/courses/rh294/rhel8.0/materials/hwreport.empty
+        dest: /root/hwreport.txt
+    - block:
+      - name: Modify the file with Inventory hostname
+        lineinfile:
+          path: /root/hwreport.txt
+          regexp: "^HOST="
+          line: "HOST={{ inventory_hostname }}\n"
+          state: present
+        when: ansible_hostname == inventory_hostname
+      rescue:
+        - name: Modify the file with Inventory hostname with NONE
+          lineinfile:
+            path: /root/hwreport.txt
+            regexp: "^HOST="
+            line: "HOST=NONE\n"
+            state: present
+          when: ansible_hostname != inventory_hostname
+    - block:
+      - name: Modify the file with MEMORY
+        lineinfile:
+          path: /root/hwreport.txt
+          regexp: "^MEMORY="
+          line: "MEMORY={{ ansible_memtotal_mb }}\n"
+          state: present
+        when: ansible_memtotal_mb is defined
+      rescue:
+        - name: Modify the file with MEMORY as NONE
+          lineinfile:
+            path: /root/hwreport.txt
+            regexp: "^MEMORY="
+            line: "MEMORY=NONE\n"
+            state: present
+          when: ansible_memtotal_mb is not defined
+    - block:
+      - name: Modify the file with BIOS
+        lineinfile:
+          path: /root/hwreport.txt
+          regexp: "^BIOS="
+          line: "BIOS={{ ansible_bios_version }}\n"
+          state: present
+        when: ansible_bios_version is defined
+      rescue:
+        - name: Modify the file with BIOS as NONE
+          lineinfile:
+            path: /root/hwreport.txt
+            regexp: "^BIOS="
+            line: "BIOS=NONE\n"
+            state: present
+          when: ansible_bios_version is not defined
+    - block:
+      - name: Modify the file with DISK SIZE VDA
+        lineinfile:
+          path: /root/hwreport.txt
+          regexp: "^DISK_SIZE_VDA="
+          line: "DISK_SIZE_VDA={{ ansible_devices.vda.size }}\n"
+          state: present
+        when: ansible_devices.vda is defined
+      rescue:
+        - name: Modify the file with DISK SIZE VDA as NONE
+          lineinfile:
+            path: /root/hwreport.txt
+            regexp: "^DISK_SIZE_VDA="
+            line: "DISK_SIZE_VDA=NONE\n"
+            state: present
+          when: ansible_devices.vda is not defined
+    - block:
+      - name: Modify the file with DISK SIZE VDB
+        lineinfile:
+          path: /root/hwreport.txt
+          regexp: "^DISK_SIZE_VDB="
+          line: "DISK_SIZE_VDB={{ ansible_devices.vdb.size }}\n"
+          state: present
+        when: ansible_devices.vdb is defined
+      rescue:
+        - name: Modify the file with DISK SIZE VDB as NONE
+          lineinfile:
+            path: /root/hwreport.txt
+            regexp: "^DISK_SIZE_VDB="
+            line: "DISK_SIZE_VDB=NONE\n"
+            state: present
+          when: ansible_devices.vdb is not defined
+...

@@ -1,0 +1,57 @@
+---
+- name: Create the partition 
+  hosts: all
+  become: true
+  vars:
+    devicename:
+      - name: vdb
+  tasks:
+    - name: Display the message
+      debug:
+        msg: "the device vdb doesnot exists"
+      loop: "{{ devicename }}"
+      when: item.name not in ansible_devices
+    - name: Create the partition of 1500M 
+      parted:
+         device: "/dev/{{ item.name }}"
+         number: 1
+         state: present
+         part_end: 1500MiB
+      loop: "{{ devicename }}"
+      when: 
+      - item.name in ansible_devices
+      - ansible_devices['vdb']['size'] > '1.00 GB'
+    - name: Display the custom message
+      debug:
+        msg: "Cannot create the partition due to insufficient space"
+      loop: "{{ devicename }}"
+      when: 
+      - item.name in ansible_devices
+      - ansible_devices['vdb']['size'] <= '1.00 GB' 
+    - name: Create the partition of 900M
+      parted:
+        device: "/dev/{{ item.name }}"
+        number: 1
+        state: present
+        part_end: 900MiB
+      loop: "{{ devicename }}"
+      when:
+        - item.name in ansible_devices
+        - ansible_devices['vdb']['size'] <= '1.00 GB'
+    - name: Format the partition 
+      filesystem:
+        fstype: ext4 
+        device: "/dev/{{ item.name }}1"
+      loop: "{{ devicename }}"
+      when: 
+        - item.name in ansible_devices
+    - name: Mount the partition 
+      mount:
+        path: /newpart
+        src: "/dev/{{ item.name }}1"
+        fstype: ext4
+        state: mounted
+      loop: "{{ devicename }}"
+      when: 
+        - item.name in ansible_devices
+...

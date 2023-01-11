@@ -1,0 +1,10 @@
+---
+- name: Using default filter
+  hosts: localhost
+  gather_facts: false
+  become: false
+  tasks:
+    - name: The variable my_var is defined
+      debug:
+        msg: "The value of the variable my_var is {{ my_var | default('blue') }}"
+...

@@ -1,0 +1,11 @@
+---
+- name: Display the contents
+  hosts: dev
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Ensure the contents of the file are displayed
+      debug:
+        msg: "{{ query('file', item) }}"
+      loop: "{{ query('fileglob', '/etc/f*.conf') }}"
+...

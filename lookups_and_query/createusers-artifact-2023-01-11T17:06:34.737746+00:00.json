@@ -1,0 +1,61 @@
+{
+    "version": "1.0.0",
+    "plays": [
+        {
+            "playbook": "/home/student/lookups_and_query/createusers.yml",
+            "playbook_uuid": "72a908b2-a2ee-4b24-9619-179bd062b423",
+            "play": "Create user from list",
+            "play_uuid": "06817a8d-0cbe-bc61-84d9-000000000007",
+            "play_pattern": "dev",
+            "name": "Create user from list",
+            "pattern": "dev",
+            "uuid": "06817a8d-0cbe-bc61-84d9-000000000007",
+            "__play_name": "Create user from list",
+            "tasks": [
+                {
+                    "playbook": "/home/student/lookups_and_query/createusers.yml",
+                    "playbook_uuid": "72a908b2-a2ee-4b24-9619-179bd062b423",
+                    "play": "Create user from list",
+                    "play_uuid": "06817a8d-0cbe-bc61-84d9-000000000007",
+                    "play_pattern": "dev",
+                    "task": "Create users",
+                    "task_uuid": "06817a8d-0cbe-bc61-84d9-000000000009",
+                    "task_action": "user",
+                    "task_args": "",
+                    "task_path": "/home/student/lookups_and_query/createusers.yml:9",
+                    "host": "serverc.lab.example.com",
+                    "uuid": "6841618d-2842-4761-bce5-de7bd074dc34",
+                    "__host": "serverc.lab.example.com",
+                    "__result": "FAILED",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 0,
+                    "__task": "Create users",
+                    "__task_action": "user",
+                    "remote_addr": "serverc.lab.example.com",
+                    "res": {
+                        "msg": "The task includes an option with an undefined variable. The error was: 'item' is undefined\n\nThe error appears to be in '/home/student/lookups_and_query/createusers.yml': line 9, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  tasks:\n  - name: Create users\n    ^ here\n",
+                        "_ansible_no_log": false
+                    },
+                    "start": "2023-01-11T17:06:34.296629",
+                    "end": "2023-01-11T17:06:34.311230",
+                    "duration": 0.014601,
+                    "ignore_errors": null,
+                    "event_loop": null
+                }
+            ]
+        }
+    ],
+    "stdout": [
+        "",
+        "PLAY [Create user from list] ***************************************************",
+        "",
+        "TASK [Create users] ************************************************************",
+        "\u001b[0;31mfatal: [serverc.lab.example.com]: FAILED! => {\"msg\": \"The task includes an option with an undefined variable. The error was: 'item' is undefined\\n\\nThe error appears to be in '/home/student/lookups_and_query/createusers.yml': line 9, column 5, but may\\nbe elsewhere in the file depending on the exact syntax problem.\\n\\nThe offending line appears to be:\\n\\n  tasks:\\n  - name: Create users\\n    ^ here\\n\"}\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;31mserverc.lab.example.com\u001b[0m    : ok=0    changed=0    unreachable=0    \u001b[0;31mfailed=1   \u001b[0m skipped=0    rescued=0    ignored=0   "
+    ],
+    "status": "failed",
+    "status_color": 9
+}

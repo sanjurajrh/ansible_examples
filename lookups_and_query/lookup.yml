@@ -1,0 +1,22 @@
+---
+- name: Using lookup plugins
+  hosts: dev
+  become: false
+  gather_facts: true
+  tasks:
+    - name: Display the value of an existing env SHELL
+      debug:
+        msg: "The value of variables SHELL is {{ lookup('env', 'SHELL') }}"
+    - name: Contents of a file /etc/fstab
+      debug:
+        msg: "{{ lookup('file', '/etc/fstab') }}"
+    - name: Multiple file contents
+      debug:
+        msg: "{{ query('file', '/etc/fstab', '/etc/issue') }}"
+    - name: Display who is logged in
+      debug:
+        msg: "{{ lookup('pipe', 'w') }}"
+    - name: Access the web site
+      debug:
+        msg: "{{ lookup('url', 'http://classroom.example.com') }}"
+...

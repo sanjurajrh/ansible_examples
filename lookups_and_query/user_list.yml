@@ -1,0 +1,11 @@
+users:
+  - name: ddave
+    first: david
+    middle: john
+    last: dave
+    uid: 8001
+  - name: harveyj
+    first: harvey
+    middle: john
+    last: james
+    uid: 8002

@@ -1,0 +1,22 @@
+---
+- name: Using regex_search filter
+  hosts: dev
+  gather_facts: false
+  become: true
+  vars:
+    oc: https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz
+  tasks:
+    - name: Download the tarball
+      get_url:
+        url: "{{ item }}"
+        dest: /var/tmp/
+      loop: 
+        - "{{ oc }}"
+    - name: extract the content to /usr/local/bin
+      unarchive:
+        remote_src: true
+        src: "{{ item | regex_search('[a-z]+.*\\.tar\\.gz') }}"
+        dest: /usr/local/bin/
+      loop: 
+        - "{{ oc }}"
+...

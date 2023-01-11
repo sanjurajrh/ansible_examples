@@ -1,0 +1,10 @@
+---
+- name: Globbing
+  hosts: dev
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Ensure v*rc files are listed
+      debug:
+        msg: "{{ query('fileglob', '/etc/v*rc') }}"
+...

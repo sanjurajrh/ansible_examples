@@ -1,0 +1,19 @@
+---
+- name: Create user from list 
+  hosts: dev
+  become: true
+  gather_facts: false
+  vars_files:
+    - user_list.yml
+  tasks:
+  - name: Create users
+    vars:
+      password: "{{ lookup('password', './password-' + '{{ item.name }}' + ' length=9') }}"
+    user:
+      name: "{{ item.name }}"
+      password: "{{ password | password_hash('sha512') }}"
+      comment: "{{ item.first | capitalize }} {{ item.middle | capitalize }} {{ item.last | capitalize }}"
+      uid : "{{ item.uid }}"
+      update_password: on_create
+    loop: "{{ users }}"
+...

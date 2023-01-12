@@ -1,1 +1,2 @@
-server[a:d].lab.example.com
+[dev]
+serverd.lab.example.com

@@ -1,0 +1,11 @@
+---
+- name: Using default filter
+  hosts: dev
+  gather_facts: true
+  become: false
+  tasks:
+    - name: The variable my_var is defined with uppercase
+      debug:
+        msg: "The value of my_var is {{ my_var | default('ansible automation') | capitalize }}. The task is delegated to {{ ansible_host }}"
+      delegate_to: serverb.lab.example.com
+...

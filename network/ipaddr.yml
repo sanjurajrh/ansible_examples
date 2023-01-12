@@ -1,0 +1,22 @@
+---
+- name: Network information
+  hosts: dev
+  become: false
+  gather_facts: false
+  vars:
+    listips: 
+    - 192.168.2.1
+    - 172.24.10.0/255.255.255.0
+    - 10.0.0.120/25
+    - 172.24.10.0/255.255.255.255
+    - ff02::1
+    - ::1
+    - 2001::1/64
+    - 2001::/64
+    - www.redhat.com
+  tasks:
+  - name: use ipaddr filter
+    debug:
+      msg: "{{ item | ipaddr('address') }}"
+    loop: "{{ listips }}"
+...

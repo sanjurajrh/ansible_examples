@@ -1,0 +1,178 @@
+{
+    "version": "1.0.0",
+    "plays": [
+        {
+            "playbook": "/home/student/network/ipaddr.yml",
+            "playbook_uuid": "77444b58-cb59-4c25-a2ca-b9cb735ad7e9",
+            "play": "Network information",
+            "play_uuid": "ae82cb3a-a354-0b49-2314-000000000007",
+            "play_pattern": "dev",
+            "name": "Network information",
+            "pattern": "dev",
+            "uuid": "ae82cb3a-a354-0b49-2314-000000000007",
+            "__play_name": "Network information",
+            "tasks": [
+                {
+                    "playbook": "/home/student/network/ipaddr.yml",
+                    "playbook_uuid": "77444b58-cb59-4c25-a2ca-b9cb735ad7e9",
+                    "play": "Network information",
+                    "play_uuid": "ae82cb3a-a354-0b49-2314-000000000007",
+                    "play_pattern": "dev",
+                    "task": "use ipaddr filter",
+                    "task_uuid": "ae82cb3a-a354-0b49-2314-000000000009",
+                    "task_action": "debug",
+                    "task_args": "",
+                    "task_path": "/home/student/network/ipaddr.yml:18",
+                    "host": "serverc.lab.example.com",
+                    "uuid": "73f75501-d488-4c17-9cfe-3ebef6431fdc",
+                    "__host": "serverc.lab.example.com",
+                    "__result": "OK",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 0,
+                    "__task": "use ipaddr filter",
+                    "__task_action": "debug",
+                    "remote_addr": "serverc.lab.example.com",
+                    "res": {
+                        "results": [
+                            {
+                                "msg": "192.168.2.1",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "192.168.2.1",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "192.168.2.1"
+                            },
+                            {
+                                "msg": "",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "172.24.10.0/255.255.255.0",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "172.24.10.0/255.255.255.0"
+                            },
+                            {
+                                "msg": "10.0.0.120",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "10.0.0.120/25",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "10.0.0.120/25"
+                            },
+                            {
+                                "msg": "172.24.10.0",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "172.24.10.0/255.255.255.255",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "172.24.10.0/255.255.255.255"
+                            },
+                            {
+                                "msg": "ff02::1",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "ff02::1",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "ff02::1"
+                            },
+                            {
+                                "msg": "::1",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "::1",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "::1"
+                            },
+                            {
+                                "msg": "2001::1",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "2001::1/64",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "2001::1/64"
+                            },
+                            {
+                                "msg": "2001::",
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "2001::/64",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "2001::/64"
+                            },
+                            {
+                                "msg": false,
+                                "_ansible_verbose_always": true,
+                                "failed": false,
+                                "_ansible_no_log": false,
+                                "changed": false,
+                                "item": "www.redhat.com",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "www.redhat.com"
+                            }
+                        ],
+                        "msg": "All items completed",
+                        "changed": false
+                    },
+                    "start": "2023-01-12T01:40:06.275097",
+                    "end": "2023-01-12T01:40:06.404449",
+                    "duration": 0.129352,
+                    "event_loop": null
+                }
+            ]
+        }
+    ],
+    "stdout": [
+        "",
+        "PLAY [Network information] *****************************************************",
+        "",
+        "TASK [use ipaddr filter] *******************************************************",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=192.168.2.1) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"192.168.2.1\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=172.24.10.0/255.255.255.0) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=10.0.0.120/25) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"10.0.0.120\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=172.24.10.0/255.255.255.255) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"172.24.10.0\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=ff02::1) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"ff02::1\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=::1) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"::1\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=2001::1/64) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"2001::1\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=2001::/64) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"2001::\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "\u001b[0;32mok: [serverc.lab.example.com] => (item=www.redhat.com) => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": false\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;32mserverc.lab.example.com\u001b[0m    : \u001b[0;32mok=1   \u001b[0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   "
+    ],
+    "status": "successful",
+    "status_color": 10
+}

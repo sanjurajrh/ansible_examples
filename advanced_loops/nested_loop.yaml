@@ -1,0 +1,23 @@
+---
+- name: Using nested loop
+  hosts: dev
+  become: true
+  tasks:
+  - name: create the groups
+    group:
+      name: "{{ item }}"
+      state: present
+    loop: 
+    - sysadmin
+    - devopsadmin
+  - name: Create user and add them to the appropriate group
+    user:
+      name: "{{ item.name }}"
+      state: present
+      groups: "{{ item.groups }}"
+    loop: 
+    - name: sysadmin01
+      groups: sysadmin
+    - name: devopsadmin01
+      groups: devopsadmin
+...

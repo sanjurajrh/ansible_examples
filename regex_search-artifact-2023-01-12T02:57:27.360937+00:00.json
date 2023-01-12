@@ -1,0 +1,212 @@
+{
+    "version": "1.0.0",
+    "plays": [
+        {
+            "playbook": "/home/student/filters/regex_search.yml",
+            "playbook_uuid": "50d0383d-afe4-490e-b501-a850238c3e85",
+            "play": "Using regex_search filter",
+            "play_uuid": "0245bcb9-8752-d130-5501-000000000006",
+            "play_pattern": "dev",
+            "name": "Using regex_search filter",
+            "pattern": "dev",
+            "uuid": "0245bcb9-8752-d130-5501-000000000006",
+            "__play_name": "Using regex_search filter",
+            "tasks": [
+                {
+                    "playbook": "/home/student/filters/regex_search.yml",
+                    "playbook_uuid": "50d0383d-afe4-490e-b501-a850238c3e85",
+                    "play": "Using regex_search filter",
+                    "play_uuid": "0245bcb9-8752-d130-5501-000000000006",
+                    "play_pattern": "dev",
+                    "task": "Download the tarball",
+                    "task_uuid": "0245bcb9-8752-d130-5501-000000000008",
+                    "task_action": "get_url",
+                    "task_args": "",
+                    "task_path": "/home/student/filters/regex_search.yml:9",
+                    "host": "serverd.lab.example.com",
+                    "uuid": "088441a1-b7e7-4435-9234-8c93835c15d0",
+                    "__host": "serverd.lab.example.com",
+                    "__result": "OK",
+                    "__changed": true,
+                    "__duration": "2s",
+                    "__number": 0,
+                    "__task": "Download the tarball",
+                    "__task_action": "get_url",
+                    "remote_addr": "serverd.lab.example.com",
+                    "res": {
+                        "results": [
+                            {
+                                "msg": "OK (52571526 bytes)",
+                                "status_code": 200,
+                                "changed": true,
+                                "checksum_dest": null,
+                                "checksum_src": "e2f8fa29b1f26a7c1c625d7a315a2465f3a18d7a",
+                                "dest": "/var/tmp/openshift-client-linux-4.11.22.tar.gz",
+                                "elapsed": 1,
+                                "url": "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz",
+                                "src": "/home/devops/.ansible/tmp/ansible-tmp-1673492239.6821167-30-171509711519917/tmpx2lryc3y",
+                                "md5sum": "4058e6c4e75bcb048e4143c776128ee2",
+                                "uid": 0,
+                                "gid": 0,
+                                "owner": "root",
+                                "group": "root",
+                                "mode": "0644",
+                                "state": "file",
+                                "secontext": "unconfined_u:object_r:user_home_t:s0",
+                                "size": 52571526,
+                                "invocation": {
+                                    "module_args": {
+                                        "url": "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz",
+                                        "dest": "/var/tmp/",
+                                        "force": false,
+                                        "http_agent": "ansible-httpget",
+                                        "use_proxy": true,
+                                        "validate_certs": true,
+                                        "force_basic_auth": false,
+                                        "use_gssapi": false,
+                                        "backup": false,
+                                        "sha256sum": "",
+                                        "checksum": "",
+                                        "timeout": 10,
+                                        "unsafe_writes": false,
+                                        "url_username": null,
+                                        "url_password": null,
+                                        "client_cert": null,
+                                        "client_key": null,
+                                        "headers": null,
+                                        "tmp_dest": null,
+                                        "mode": null,
+                                        "owner": null,
+                                        "group": null,
+                                        "seuser": null,
+                                        "serole": null,
+                                        "selevel": null,
+                                        "setype": null,
+                                        "attributes": null
+                                    }
+                                },
+                                "ansible_facts": {
+                                    "discovered_interpreter_python": "/usr/libexec/platform-python"
+                                },
+                                "_ansible_no_log": false,
+                                "failed": false,
+                                "item": "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz"
+                            }
+                        ],
+                        "changed": true,
+                        "msg": "All items completed"
+                    },
+                    "start": "2023-01-12T02:57:19.423327",
+                    "end": "2023-01-12T02:57:22.184753",
+                    "duration": 2.761426,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/student/filters/regex_search.yml",
+                    "playbook_uuid": "50d0383d-afe4-490e-b501-a850238c3e85",
+                    "play": "Using regex_search filter",
+                    "play_uuid": "0245bcb9-8752-d130-5501-000000000006",
+                    "play_pattern": "dev",
+                    "task": "extract the content to /usr/local/bin",
+                    "task_uuid": "0245bcb9-8752-d130-5501-000000000009",
+                    "task_action": "unarchive",
+                    "task_args": "",
+                    "task_path": "/home/student/filters/regex_search.yml:15",
+                    "host": "serverd.lab.example.com",
+                    "uuid": "77a31064-2d98-4dca-a38d-ce2fcbe8bf12",
+                    "__host": "serverd.lab.example.com",
+                    "__result": "OK",
+                    "__changed": true,
+                    "__duration": "4s",
+                    "__number": 1,
+                    "__task": "extract the content to /usr/local/bin",
+                    "__task_action": "unarchive",
+                    "remote_addr": "serverd.lab.example.com",
+                    "res": {
+                        "results": [
+                            {
+                                "handler": "TgzArchive",
+                                "dest": "/usr/local/bin/",
+                                "src": "/home/devops/.ansible/tmp/ansible-tmp-1673492242.2668016-44-110938636955022/openshift-client-linux-4.11.22.tar0xf5pqsi.gz",
+                                "extract_results": {
+                                    "cmd": [
+                                        "/bin/gtar",
+                                        "--extract",
+                                        "-C",
+                                        "/usr/local/bin/",
+                                        "-z",
+                                        "-f",
+                                        "/home/devops/.ansible/tmp/ansible-tmp-1673492242.2668016-44-110938636955022/openshift-client-linux-4.11.22.tar0xf5pqsi.gz"
+                                    ],
+                                    "rc": 0,
+                                    "out": "",
+                                    "err": ""
+                                },
+                                "changed": true,
+                                "uid": 0,
+                                "gid": 0,
+                                "owner": "root",
+                                "group": "root",
+                                "mode": "0755",
+                                "state": "directory",
+                                "secontext": "system_u:object_r:bin_t:s0",
+                                "size": 48,
+                                "invocation": {
+                                    "module_args": {
+                                        "remote_src": true,
+                                        "src": "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz",
+                                        "dest": "/usr/local/bin/",
+                                        "list_files": false,
+                                        "keep_newer": false,
+                                        "exclude": [],
+                                        "include": [],
+                                        "extra_opts": [],
+                                        "validate_certs": true,
+                                        "unsafe_writes": false,
+                                        "creates": null,
+                                        "mode": null,
+                                        "owner": null,
+                                        "group": null,
+                                        "seuser": null,
+                                        "serole": null,
+                                        "selevel": null,
+                                        "setype": null,
+                                        "attributes": null
+                                    }
+                                },
+                                "_ansible_no_log": false,
+                                "failed": false,
+                                "item": "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz",
+                                "ansible_loop_var": "item",
+                                "_ansible_item_label": "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz"
+                            }
+                        ],
+                        "changed": true,
+                        "msg": "All items completed"
+                    },
+                    "start": "2023-01-12T02:57:22.192455",
+                    "end": "2023-01-12T02:57:26.886203",
+                    "duration": 4.693748,
+                    "event_loop": null
+                }
+            ]
+        }
+    ],
+    "stdout": [
+        "",
+        "PLAY [Using regex_search filter] ***********************************************",
+        "",
+        "TASK [Download the tarball] ****************************************************",
+        "\u001b[0;33mchanged: [serverd.lab.example.com] => (item=https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz)\u001b[0m",
+        "",
+        "TASK [extract the content to /usr/local/bin] ***********************************",
+        "\u001b[0;33mchanged: [serverd.lab.example.com] => (item=https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz)\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;33mserverd.lab.example.com\u001b[0m    : \u001b[0;32mok=2   \u001b[0m \u001b[0;33mchanged=2   \u001b[0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   "
+    ],
+    "status": "successful",
+    "status_color": 10
+}
